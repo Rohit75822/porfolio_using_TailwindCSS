@@ -1,0 +1,811 @@
+    <!DOCTYPE html>
+    <html lang="en" class="scroll-smooth">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>K Rohit Varma | Portfolio</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+        <script>
+            // Dark mode functionality
+            function initDarkMode() {
+                if (localStorage.getItem('darkMode') === 'true' || 
+                    (!localStorage.getItem('darkMode') && 
+                    window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                    document.documentElement.classList.add('dark');
+                    document.getElementById('darkModeToggle').checked = true;
+                }
+            }
+    
+            function toggleDarkMode() {
+                const isDarkMode = document.documentElement.classList.toggle('dark');
+                localStorage.setItem('darkMode', isDarkMode);
+            }
+    
+            // Initialize dark mode on page load
+            document.addEventListener('DOMContentLoaded', initDarkMode);
+        </script>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+            body {
+                font-family: 'Poppins', sans-serif;
+            }
+            .skill-progress {
+                transition: width 1s ease-in-out;
+            }
+            .animated {
+                animation: fadeIn 0.5s ease-in-out;
+            }
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+        </style>
+    </head>
+    <body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
+        <!-- Navigation -->
+        <header class="sticky top-0 z-50 bg-white dark:bg-gray-900 shadow-md">
+            <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+                <a href="#" class="text-2xl font-bold bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">Rohit Varma</a>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="#about" class="hover:text-blue-500 transition-colors">About</a>
+                    <a href="#skills" class="hover:text-blue-500 transition-colors">Skills</a>
+                    <a href="#projects" class="hover:text-blue-500 transition-colors">Projects</a>
+                    <a href="#certificates" class="hover:text-blue-500 transition-colors">Certificates</a>
+                    <a href="#achievements" class="hover:text-blue-500 transition-colors">Achievements</a>
+                    <a href="#contact" class="hover:text-blue-500 transition-colors">Contact</a>
+                </div>
+    
+
+    
+                    <!-- Mobile Menu Button -->
+                    <button class="md:hidden focus:outline-none" id="menuButton">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </nav>
+    
+            <!-- Mobile Menu -->
+            <div class="hidden md:hidden bg-white dark:bg-gray-900 shadow-lg" id="mobileMenu">
+                <div class="flex flex-col space-y-4 px-6 py-4">
+                    <a href="#about" class="hover:text-blue-500 transition-colors">About</a>
+                    <a href="#skills" class="hover:text-blue-500 transition-colors">Skills</a>
+                    <a href="#projects" class="hover:text-blue-500 transition-colors">Projects</a>
+                    <a href="#certificates" class="hover:text-blue-500 transition-colors">Certificates</a>
+                    <a href="#achievements" class="hover:text-blue-500 transition-colors">Achievements</a>
+                    <a href="#contact" class="hover:text-blue-500 transition-colors">Contact</a>
+                </div>
+            </div>
+        </header>
+    
+        <!-- Hero Section -->
+        <section class="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-900 min-h-screen flex items-center">
+            <div class="container mx-auto px-6 py-20 md:py-32">
+                <div class="flex flex-col md:flex-row items-center justify-between">
+                    <div class="md:w-1/2 mb-12 md:mb-0">
+                        <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">K Rohit Varma</h1>
+                        <p class="text-xl md:text-2xl font-medium mb-6 text-gray-600 dark:text-gray-300">Aspiring Developer | Tech Enthusiast | Problem Solver</p>
+                        <p class="text-lg mb-8 max-w-lg text-gray-600 dark:text-gray-300">I'm a self-motivated B.Tech student passionate about building impactful digital experiences through technology.</p>
+                        <div class="flex space-x-4">
+                            <a href="#contact" class="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors shadow-lg hover:shadow-xl">Contact Me</a>
+                            <a href="#projects" class="px-6 py-3 bg-white dark:bg-gray-800 text-blue-600 dark:text-blue-400 font-medium rounded-lg border border-blue-600 hover:bg-blue-50 dark:hover:bg-gray-700 transition-colors shadow-lg hover:shadow-xl">View Projects</a>
+                        </div>
+                    </div>
+                    <div class="md:w-2/5">
+                        <div class="relative">
+                            <div class="w-64 h-64 md:w-80 md:h-80 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full overflow-hidden shadow-xl mx-auto">
+                                <img src="profile.jpg" alt="Profile" class="w-full h-full object-cover" />
+                            </div>
+                            <div class="absolute bottom-0 right-0 bg-white dark:bg-gray-800 rounded-full p-4 shadow-lg">
+                                <div class="bg-gradient-to-r from-blue-500 to-purple-600 rounded-full p-3">
+                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        
+    
+        <!-- Back to Top Button -->
+        <button id="backToTopBtn" class="fixed bottom-6 right-6 bg-blue-600 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg opacity-0 invisible transition-all duration-300 hover:bg-blue-700">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+            </svg>
+        </button>
+    
+        <!-- JavaScript for functionality -->
+        <script>
+            // Mobile menu toggle
+            document.getElementById('menuButton').addEventListener('click', function() {
+                const mobileMenu = document.getElementById('mobileMenu');
+                mobileMenu.classList.toggle('hidden');
+            });
+    
+            // Back to top button
+            const backToTopBtn = document.getElementById('backToTopBtn');
+            
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 300) {
+                    backToTopBtn.classList.remove('opacity-0', 'invisible');
+                    backToTopBtn.classList.add('opacity-100', 'visible');
+                } else {
+                    backToTopBtn.classList.add('opacity-0', 'invisible');
+                    backToTopBtn.classList.remove('opacity-100', 'visible');
+                }
+            });
+            
+            backToTopBtn.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+    
+            // Skills animation
+            function animateSkills() {
+                const skills = document.querySelectorAll('.skill-progress');
+                skills.forEach(skill => {
+                    const targetWidth = skill.style.width;
+                    skill.style.width = '0%';
+                    setTimeout(() => {
+                        skill.style.width = targetWidth;
+                    }, 300);
+                });
+            }
+    
+            // Intersection Observer for animations
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        if (entry.target.id === 'skills') {
+                            animateSkills();
+                        }
+                        entry.target.classList.add('animated');
+                    }
+                });
+            }, { threshold: 0.1 });
+    
+            document.querySelectorAll('section').forEach(section => {
+                observer.observe(section);
+            });
+    
+            // Initialize when DOM is loaded
+            document.addEventListener('DOMContentLoaded', function() {
+                // Ensure dark mode is correctly applied on page load
+                initDarkMode();
+            });
+        </script>
+    </body>
+    </html>
+    
+        <!-- About Me Section -->
+        <section id="about" class="py-20 bg-white dark:bg-gray-900">
+            <div class="container mx-auto px-6">
+                <div class="mb-16 text-center">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">About Me</h2>
+                    <div class="h-1 w-24 bg-blue-600 mx-auto"></div>
+                </div>
+                
+                <div class="flex flex-col md:flex-row items-center">
+                    <div class="md:w-1/2 mb-8 md:mb-0">
+                        <img src="profile_2.jpg" alt="About Me" class="rounded-lg shadow-xl mx-auto" />
+                    </div>
+                    
+                    <div class="md:w-1/2 md:pl-12">
+                        <div class="bg-gray-50 dark:bg-gray-800 p-8 rounded-lg shadow-lg">
+                            <div class="flex items-center mb-6">
+                                <div class="w-12 h-12 flex items-center justify-center bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 rounded-full mr-4">
+                                    <i class="fas fa-graduation-cap text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold">Education</h3>
+                                    <p class="text-gray-600 dark:text-gray-300">B.Tech in Computer Science and IT</p>
+                                    <p class="text-sm text-gray-500 dark:text-gray-400">MLR Institute of Technology (2021-2025)</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center mb-6">
+                                <div class="w-12 h-12 flex items-center justify-center bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 rounded-full mr-4">
+                                    <i class="fas fa-chart-line text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold">GPA</h3>
+                                    <p class="text-gray-600 dark:text-gray-300">7.5/10</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center mb-6">
+                                <div class="w-12 h-12 flex items-center justify-center bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 rounded-full mr-4">
+                                    <i class="fas fa-map-marker-alt text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold">Location</h3>
+                                    <p class="text-gray-600 dark:text-gray-300">Hyderabad, India</p>
+                                </div>
+                            </div>
+                            
+                            <p class="text-gray-700 dark:text-gray-200 mt-6">
+                                I'm a final-year B.Tech student focused on enhancing my skills in development and data analysis. I enjoy working on real-world projects and hackathons. My goal is to leverage technology to solve real-world problems and create meaningful digital experiences.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <!-- Skills Section -->
+        <section id="skills" class="py-20 bg-gray-50 dark:bg-gray-800">
+            <div class="container mx-auto px-6">
+                <div class="mb-16 text-center">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">My Skills</h2>
+                    <div class="h-1 w-24 bg-blue-600 mx-auto"></div>
+                    <p class="mt-4 text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">Here are the technologies and tools I've been working with</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Programming Languages -->
+                    <div class="bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                        <div class="bg-gradient-to-r from-blue-500 to-blue-700 py-4 px-6">
+                            <h3 class="text-xl font-bold text-white">Programming Languages</h3>
+                        </div>
+                        <div class="p-6">
+                            <!-- Java -->
+                            <div class="mb-4">
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">Java</span>
+                                    <span class="text-sm text-gray-500 dark:text-gray-400">85%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+                                    <div class="bg-blue-600 h-2.5 rounded-full skill-progress" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- Python -->
+                            <div class="mb-4">
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">Python</span>
+                                    <span class="text-sm text-gray-500 dark:text-gray-400">80%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+                                    <div class="bg-blue-600 h-2.5 rounded-full skill-progress" style="width: 80%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Web Technologies -->
+                    <div class="bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                        <div class="bg-gradient-to-r from-purple-500 to-purple-700 py-4 px-6">
+                            <h3 class="text-xl font-bold text-white">Web Technologies</h3>
+                        </div>
+                        <div class="p-6">
+                            <!-- HTML -->
+                            <div class="mb-4">
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">HTML</span>
+                                    <span class="text-sm text-gray-500 dark:text-gray-400">90%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+                                    <div class="bg-purple-600 h-2.5 rounded-full skill-progress" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- CSS -->
+                            <div class="mb-4">
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">CSS</span>
+                                    <span class="text-sm text-gray-500 dark:text-gray-400">85%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+                                    <div class="bg-purple-600 h-2.5 rounded-full skill-progress" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- JavaScript -->
+                            <div class="mb-4">
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">JavaScript</span>
+                                    <span class="text-sm text-gray-500 dark:text-gray-400">75%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+                                    <div class="bg-purple-600 h-2.5 rounded-full skill-progress" style="width: 75%"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- Bootstrap -->
+                            <div class="mb-4">
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">Bootstrap</span>
+                                    <span class="text-sm text-gray-500 dark:text-gray-400">80%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+                                    <div class="bg-purple-600 h-2.5 rounded-full skill-progress" style="width: 80%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Databases -->
+                    <div class="bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                        <div class="bg-gradient-to-r from-green-500 to-green-700 py-4 px-6">
+                            <h3 class="text-xl font-bold text-white">Databases</h3>
+                        </div>
+                        <div class="p-6">
+                            <!-- MySQL -->
+                            <div class="mb-4">
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">MySQL</span>
+                                    <span class="text-sm text-gray-500 dark:text-gray-400">80%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+                                    <div class="bg-green-600 h-2.5 rounded-full skill-progress" style="width: 80%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Tools -->
+                    <div class="bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                        <div class="bg-gradient-to-r from-indigo-500 to-indigo-700 py-4 px-6">
+                            <h3 class="text-xl font-bold text-white">Tools</h3>
+                        </div>
+                        <div class="p-6">
+                            <!-- Figma -->
+                            <div class="mb-4">
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">Figma</span>
+                                    <span class="text-sm text-gray-500 dark:text-gray-400">85%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+                                    <div class="bg-indigo-600 h-2.5 rounded-full skill-progress" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- Power BI -->
+                            <div class="mb-4">
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">Power BI</span>
+                                    <span class="text-sm text-gray-500 dark:text-gray-400">75%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+                                    <div class="bg-indigo-600 h-2.5 rounded-full skill-progress" style="width: 75%"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- Canva -->
+                            <div class="mb-4">
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">Canva</span>
+                                    <span class="text-sm text-gray-500 dark:text-gray-400">90%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+                                    <div class="bg-indigo-600 h-2.5 rounded-full skill-progress" style="width: 90%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <!-- Projects Section -->
+        <section id="projects" class="py-20 bg-white dark:bg-gray-900">
+            <div class="container mx-auto px-6">
+                <div class="mb-16 text-center">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">My Projects</h2>
+                    <div class="h-1 w-24 bg-blue-600 mx-auto"></div>
+                    <p class="mt-4 text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">Here are some projects I've worked on</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Project 1 -->
+                    <div class="bg-gray-50 dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                        <div class="h-48 bg-gray-200 dark:bg-gray-700 relative overflow-hidden">
+                            <img src="project1.png" alt="Traffic Sign Recognition" class="w-full h-full object-cover" />
+                            <div class="absolute top-0 left-0 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-br-lg">
+                                Machine Learning
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Traffic Sign Recognition</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4">Used CNN to classify traffic signs for autonomous systems.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs font-medium px-2.5 py-0.5 rounded">Python</span>
+                                <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs font-medium px-2.5 py-0.5 rounded">TensorFlow</span>
+                                <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs font-medium px-2.5 py-0.5 rounded">CNN</span>
+                            </div>
+                            <a href="https://github.com/Rohit75822/traffic-sign-recognization-model" class="text-blue-600 dark:text-blue-400 hover:underline font-medium inline-flex items-center">
+                                View Project
+                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 2 -->
+                    <div class="bg-gray-50 dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                        <div class="h-48 bg-gray-200 dark:bg-gray-700 relative overflow-hidden">
+                            <img src="project2.jpeg" alt="Avani – Farmers Data Management" class="w-full h-full object-cover" />
+                            <div class="absolute top-0 left-0 bg-green-600 text-white text-xs font-bold px-3 py-1 rounded-br-lg">
+                                Web App
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Avani – Farmers Data Management</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4">A web app providing solutions like cold storage info and residue management.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-xs font-medium px-2.5 py-0.5 rounded">HTML</span>
+                                <span class="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-xs font-medium px-2.5 py-0.5 rounded">CSS</span>
+                                <span class="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-xs font-medium px-2.5 py-0.5 rounded">JavaScript</span>
+                                <span class="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-xs font-medium px-2.5 py-0.5 rounded">MySQL</span>
+                            </div>
+                            <a href="https://github.com/Rohit75822/farmer.pro" class="text-green-600 dark:text-green-400 hover:underline font-medium inline-flex items-center">
+                                View Project
+                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 3 -->
+                    <div class="bg-gray-50 dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                        <div class="h-48 bg-gray-200 dark:bg-gray-700 relative overflow-hidden">
+                            <img src="project3.jpg" alt="Multiverse AI Suite" class="w-full h-full object-cover" />
+                            <div class="absolute top-0 left-0 bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-br-lg">
+                                Mobile App
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Multiverse AI Suite</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4">A React Native mobile app with chatbot, AI image generation, and translator features.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 text-xs font-medium px-2.5 py-0.5 rounded">React Native</span>
+                                <span class="bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 text-xs font-medium px-2.5 py-0.5 rounded">JavaScript</span>
+                                <span class="bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 text-xs font-medium px-2.5 py-0.5 rounded">API Integration</span>
+                            </div>
+                            <a href="#" class="text-purple-600 dark:text-purple-400 hover:underline font-medium inline-flex items-center">
+                                View Project
+                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <!-- Certificates Section -->
+        <section id="certificates" class="py-20 bg-gray-50 dark:bg-gray-800">
+            <div class="container mx-auto px-6">
+                <div class="mb-16 text-center">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Certificates</h2>
+                    <div class="h-1 w-24 bg-blue-600 mx-auto"></div>
+                    <p class="mt-4 text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">Professional certifications and courses I've completed</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Certificate 1 -->
+                    <div class="bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden transform transition-transform hover:scale-105">
+                        <div class="p-1 bg-gradient-to-r from-blue-500 to-purple-600">
+                            <div class="bg-white dark:bg-gray-900 p-5">
+                                <div class="flex items-center justify-between mb-4">
+                                    <div class="w-12 h-12 flex items-center justify-center bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 rounded-full">
+                                        <i class="fas fa-certificate text-xl"></i>
+                                    </div>
+                                    <div class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs font-medium px-2.5 py-0.5 rounded">
+                                        Cisco
+                                    </div>
+                                </div>
+                                <h3 class="text-lg font-bold mb-2">PCAP: Programming Essentials in Python</h3>
+                                <p class="text-gray-600 dark:text-gray-300 text-sm mb-3">Comprehensive Python programming certification covering fundamentals to advanced concepts.</p>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-sm text-gray-500 dark:text-gray-400">2023</span>
+                                    <a href="https://drive.google.com/file/d/15KtjgYzT6yyxPqa2jBUjAnU1wRKPZP0-/view" class="text-blue-600 dark:text-blue-400 hover:underline text-sm font-medium">View Certificate</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Certificate 2 -->
+                    <div class="bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden transform transition-transform hover:scale-105">
+                        <div class="p-1 bg-gradient-to-r from-blue-500 to-purple-600">
+                            <div class="bg-white dark:bg-gray-900 p-5">
+                                <div class="flex items-center justify-between mb-4">
+                                    <div class="w-12 h-12 flex items-center justify-center bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 rounded-full">
+                                        <i class="fas fa-chart-pie text-xl"></i>
+                                    </div>
+                                    <div class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs font-medium px-2.5 py-0.5 rounded">
+                                        Cisco
+                                    </div>
+                                </div>
+                                <h3 class="text-lg font-bold mb-2">Data Analytics Essentials</h3>
+                                <p class="text-gray-600 dark:text-gray-300 text-sm mb-3">Fundamentals of data analytics, visualization techniques, and interpretation skills.</p>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-sm text-gray-500 dark:text-gray-400">2023</span>
+                                    <a href="https://drive.google.com/file/d/1FXS2Ok4dM9b-zbNV4FDHaaJmr4jQgo2Z/view" class="text-blue-600 dark:text-blue-400 hover:underline text-sm font-medium">View Certificate</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Certificate 3 -->
+                    <div class="bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden transform transition-transform hover:scale-105">
+                        <div class="p-1 bg-gradient-to-r from-blue-500 to-purple-600">
+                            <div class="bg-white dark:bg-gray-900 p-5">
+                                <div class="flex items-center justify-between mb-4">
+                                    <div class="w-12 h-12 flex items-center justify-center bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 rounded-full">
+                                        <i class="fas fa-paint-brush text-xl"></i>
+                                    </div>
+                                    <div class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs font-medium px-2.5 py-0.5 rounded">
+                                        Udemy
+                                    </div>
+                                </div>
+                                <h3 class="text-lg font-bold mb-2">UI/UX with Figma</h3>
+                                <p class="text-gray-600 dark:text-gray-300 text-sm mb-3">Comprehensive course on interface design principles and prototyping using Figma.</p>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-sm text-gray-500 dark:text-gray-400">2022</span>
+                                    <a href="https://www.udemy.com/certificate/UC-69ef49b2-a4d0-4420-86a8-b9917bbc6017/" class="text-blue-600 dark:text-blue-400 hover:underline text-sm font-medium">View Certificate</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Certificate 4 -->
+                    <div class="bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden transform transition-transform hover:scale-105">
+                        <div class="p-1 bg-gradient-to-r from-blue-500 to-purple-600">
+                            <div class="bg-white dark:bg-gray-900 p-5">
+                                <div class="flex items-center justify-between mb-4">
+                                    <div class="w-12 h-12 flex items-center justify-center bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 rounded-full">
+                                        <i class="fab fa-java text-xl"></i>
+                                    </div>
+                                    <div class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs font-medium px-2.5 py-0.5 rounded">
+                                        Udemy
+                                    </div>
+                                </div>
+                                <h3 class="text-lg font-bold mb-2">Basics of Java</h3>
+                                <p class="text-gray-600 dark:text-gray-300 text-sm mb-3">Introduction to Java programming language, OOP concepts, and application development.</p>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-sm text-gray-500 dark:text-gray-400">2022</span>
+                                    <a href="https://www.udemy.com/certificate/UC-c6635966-97b6-42aa-a259-8f1469cf32d5/" class="text-blue-600 dark:text-blue-400 hover:underline text-sm font-medium">View Certificate</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Certificate 5 -->
+                    <div class="bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden transform transition-transform hover:scale-105">
+                        <div class="p-1 bg-gradient-to-r from-blue-500 to-purple-600">
+                            <div class="bg-white dark:bg-gray-900 p-5">
+                                <div class="flex items-center justify-between mb-4">
+                                    <div class="w-12 h-12 flex items-center justify-center bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 rounded-full">
+                                        <i class="fas fa-chart-bar text-xl"></i>
+                                    </div>
+                                    <div class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs font-medium px-2.5 py-0.5 rounded">
+                                        Infosys
+                                    </div>
+                                </div>
+                                <h3 class="text-lg font-bold mb-2">Power BI</h3>
+                                <p class="text-gray-600 dark:text-gray-300 text-sm mb-3">Data visualization and business intelligence tools using Microsoft Power BI.</p>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-sm text-gray-500 dark:text-gray-400">2023</span>
+                                    <a href="#" class="text-blue-600 dark:text-blue-400 hover:underline text-sm font-medium">View Certificate</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Certificate 6 -->
+                    <div class="bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden transform transition-transform hover:scale-105">
+                        <div class="p-1 bg-gradient-to-r from-blue-500 to-purple-600">
+                            <div class="bg-white dark:bg-gray-900 p-5">
+                                <div class="flex items-center justify-between mb-4">
+                                    <div class="w-12 h-12 flex items-center justify-center bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 rounded-full">
+                                        <i class="fas fa-laptop-code text-xl"></i>
+                                    </div>
+                                    <div class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs font-medium px-2.5 py-0.5 rounded">
+                                        NXTWAVE
+                                    </div>
+                                </div>
+                                <h3 class="text-lg font-bold mb-2">Responsive Web Development</h3>
+                                <p class="text-gray-600 dark:text-gray-300 text-sm mb-3">Creating websites that work seamlessly across all devices and screen sizes.</p>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-sm text-gray-500 dark:text-gray-400">2023</span>
+                                    <a href="https://certificates.ccbp.in/academy/build-your-own-responsive-website?id=XCJXVUPUVO" class="text-blue-600 dark:text-blue-400 hover:underline text-sm font-medium">View Certificate</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <!-- Achievements Section -->
+        <section id="achievements" class="py-20 bg-white dark:bg-gray-900">
+            <div class="container mx-auto px-6">
+                <div class="mb-16 text-center">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Achievements</h2>
+                    <div class="h-1 w-24 bg-blue-600 mx-auto"></div>
+                    <p class="mt-4 text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">Recognition and accomplishments I've received throughout my journey</p>
+                </div>
+                
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl shadow-xl p-8 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 -mt-10 -mr-10 w-40 h-40 bg-blue-500 opacity-10 rounded-full"></div>
+                    <div class="absolute bottom-0 left-0 -mb-10 -ml-10 w-40 h-40 bg-purple-500 opacity-10 rounded-full"></div>
+                    
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/4 mb-6 md:mb-0 flex justify-center">
+                            <div class="w-24 h-24 flex items-center justify-center bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 rounded-full">
+                                <i class="fas fa-trophy text-4xl"></i>
+                            </div>
+                        </div>
+                        <div class="md:w-3/4 md:pl-8">
+                            <h3 class="text-xl font-bold mb-3">Runner-up in UI/UX Bootcamp 24hr Hackathon</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4">
+                                Secured second place in the UI/UX Bootcamp Hackathon organized by CIE, MLRIT, demonstrating strong user interface design skills and creative problem-solving abilities under tight time constraints.
+                            </p>
+                            <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                                <i class="far fa-calendar-alt mr-2"></i>
+                                2023
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Additional achievements can be added here in the same format -->
+                </div>
+            </div>
+        </section>
+    
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-900">
+            <div class="container mx-auto px-6">
+                <div class="mb-16 text-center">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Get In Touch</h2>
+                    <div class="h-1 w-24 bg-blue-600 mx-auto"></div>
+                    <p class="mt-4 text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">Feel free to reach out for collaborations, opportunities, or just to say hello!</p>
+                </div>
+                
+                <div class="flex flex-col lg:flex-row">
+                    <div class="lg:w-1/2 lg:pr-8 mb-12 lg:mb-0">
+                        <div class="bg-white dark:bg-gray-900 rounded-xl shadow-xl p-8">
+                            <form>
+                                <div class="mb-6">
+                                    <label for="name" class="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">Your Name</label>
+                                    <input type="text" id="name" class="bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3" placeholder="John Doe" required>
+                                </div>
+                                <div class="mb-6">
+                                    <label for="email" class="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">Your Email</label>
+                                    <input type="email" id="email" class="bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3" placeholder="name@example.com" required>
+                                </div>
+                                <div class="mb-6">
+                                    <label for="subject" class="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">Subject</label>
+                                    <input type="text" id="subject" class="bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3" placeholder="How can I help you?" required>
+                                </div>
+                                <div class="mb-6">
+                                    <label for="message" class="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">Your Message</label>
+                                    <textarea id="message" rows="4" class="bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3" placeholder="Let's talk about..."></textarea>
+                                </div>
+                                <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-medium py-3 px-6 rounded-lg transition-colors shadow-lg">Send Message</button>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <div class="lg:w-1/2 lg:pl-8">
+                        <div class="bg-white dark:bg-gray-900 rounded-xl shadow-xl p-8 h-full">
+                            <h3 class="text-xl font-bold mb-6">Contact Information</h3>
+                            
+                            <div class="mb-8 flex items-start">
+                                <div class="w-12 h-12 flex items-center justify-center bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 rounded-full mr-4 flex-shrink-0">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-medium mb-1">Email</h4>
+                                    <p class="text-gray-600 dark:text-gray-300">rohit75822@gmail.com</p>
+                                    <a href="mailto:rohit75822@gmail.com" class="text-blue-600 dark:text-blue-400 hover:underline text-sm">Send email</a>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-8 flex items-start">
+                                <div class="w-12 h-12 flex items-center justify-center bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 rounded-full mr-4 flex-shrink-0">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-medium mb-1">Phone</h4>
+                                    <p class="text-gray-600 dark:text-gray-300">8309044281</p>
+                                    <a href="tel:8309044281" class="text-blue-600 dark:text-blue-400 hover:underline text-sm">Call me</a>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-8 flex items-start">
+                                <div class="w-12 h-12 flex items-center justify-center bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 rounded-full mr-4 flex-shrink-0">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-medium mb-1">Location</h4>
+                                    <p class="text-gray-600 dark:text-gray-300">Hyderabad, India</p>
+                                </div>
+                            </div>
+                            
+                            <h3 class="text-xl font-bold mb-6">Connect With Me</h3>
+                            <div class="flex space-x-4">
+                                <a href="https://linkedin.com/in/keelu-rohit-varma-292817245" target="_blank" class="w-12 h-12 flex items-center justify-center bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 rounded-full hover:bg-blue-600 hover:text-white hover:dark:bg-blue-600 transition-colors">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="https://github.com/Rohit75822" target="_blank" class="w-12 h-12 flex items-center justify-center bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full hover:bg-gray-700 hover:text-white hover:dark:bg-gray-700 transition-colors">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="#" target="_blank" class="w-12 h-12 flex items-center justify-center bg-red-100 dark:bg-red-900 text-red-600 dark:text-red-300 rounded-full hover:bg-red-600 hover:text-white hover:dark:bg-red-600 transition-colors">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="#" target="_blank" class="w-12 h-12 flex items-center justify-center bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 rounded-full hover:bg-blue-600 hover:text-white hover:dark:bg-blue-600 transition-colors">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">K Rohit Varma</h3>
+                    <p class="text-gray-400 mt-2">Aspiring Developer | Tech Enthusiast</p>
+                </div>
+                
+                <div class="flex flex-wrap justify-center md:justify-end gap-8">
+                    <div>
+                        <h4 class="font-bold mb-3 text-blue-400">Quick Links</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#about" class="text-gray-400 hover:text-white transition-colors">About</a></li>
+                            <li><a href="#skills" class="text-gray-400 hover:text-white transition-colors">Skills</a></li>
+                            <li><a href="#projects" class="text-gray-400 hover:text-white transition-colors">Projects</a></li>
+                            <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-bold mb-3 text-purple-400">Contact</h4>
+                        <ul class="space-y-2">
+                            <li class="flex items-center text-gray-400">
+                                <i class="fas fa-envelope mr-2 text-sm"></i>
+                                rohit75822@gmail.com
+                            </li>
+                            <li class="flex items-center text-gray-400">
+                                <i class="fas fa-phone mr-2 text-sm"></i>
+                                8309044281
+                            </li>
+                            <li class="flex items-center text-gray-400">
+                                <i class="fas fa-map-marker-alt mr-2 text-sm"></i>
+                                Hyderabad, India
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 text-sm mb-4 md:mb-0">&copy; 2025 K Rohit Varma. All rights reserved.</p>
+                <div class="flex space-x-4">
+                    <a href="https://linkedin.com/in/keelu-rohit-varma-292817245" target="_blank" class="text-gray-500 hover:text-white transition-colors">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://github.com/Rohit75822" target="_blank" class="text-gray-500 hover:text-white transition-colors">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
